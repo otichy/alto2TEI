@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tei:TEI xmlns:tei="http://www.tei-c.org/ns/1.0">
+   <tei:teiHeader>
+      <tei:fileDesc>
+         <tei:titleStmt>
+            <tei:title>ALTO to TEI (Main + Running Title + Margin)</tei:title>
+         </tei:titleStmt>
+         <tei:publicationStmt>
+            <tei:p>Unpublished; generated via XSLT conversion.</tei:p>
+         </tei:publicationStmt>
+         <tei:sourceDesc>
+            <tei:p>
+               Source ALTO file:
+               bpt6k9912811_f13.jpg</tei:p>
+         </tei:sourceDesc>
+      </tei:fileDesc>
+   </tei:teiHeader>
+   <tei:text>
+      <tei:body>
+         <tei:ab>lpcipit liber bresich quẽ nos geresii dicim N principic creauit deus celũ et terram. Terra auteni erat mam̃s et uatua: et terrebre erãt suꝑ faciẽ abissi: et sp̃s dñi ferebat̃ suꝑ aquas. Dixitq deus. Fiat lux. Et facta ẽ lux. Et uidit deus lucem ꝙ esset bona:⁊ diuisit lutẽ a terrebris: appellauitq lucem diem:⁊ tenebras noctem. Factũq est uespe et mane dĩes unus. Dixit qͦz deus. Fiat firmamentũ in medid aquaꝵ:⁊ dimi dat aquas ab aquis. Et fecit deus frr- mameritũr: diuisitq aquas que erãt sab firmamento ab hiis q̃ erant suꝑ firmamentũ. Et factũ ẽ ĩta. Uocamĩtq deus firmameritũ telũ: ⁊ factũ ẽ uesꝑe et mane dies secũdꝰ. Dixit uero deus. Congregerit̃ aque que sub celci sũt in locũ unĩr ⁊ appareat arida. Et factũ ẽ ĩta. Et uricauit deus aridam terram: tongregatio nesq aquar appellauit maria. Et uidit deus cy esser bonũ: et ait. Germinet terra herbã uixentem et facientẽ seiner: ⁊ lignũ pomifer fatiẽs fructũ iuxta genus suũ:. tuiꝰ semeri in semetĩp̃t sit suꝑ terrã. Et factũ ẽ ita. Et protulit terra herbã uireritẽ ⁊ facientẽ semẽ iuxra genus suũ: lignũq faciẽs fructũ: ⁊ habẽs unũqd̃q semetitẽ scd̃m speciẽ suã. Et uidit deus ꝙ esset bonũ: et factũ est uespe et mant dies tercius. Dixitq autẽ deus. Fiant luminaria in firmamẽto celi. ⁊ diuidãt diem ac nocteur ⁊ sinit in signa ⁊ trra et dies ⁊ annos: ut luceãt in firmamẽto celiet illumĩnẽt terrã. Et factũ ẽ ita. Fecitq deus dut lumĩaria magna: lumĩare maius ut p̃esset dier et lumĩare minꝰ ut p̃esset nocti: ⁊ stellas. Eposuit eas in firmamẽto celi ut luterent suꝑ terrã: et p̃essenit diei ac nocti: ⁊ diuiderent lucẽ ac tenebras. Et uĩdĩt deꝰ ꝙ esset bonir. et factũ ẽ uesꝑe ⁊ mane dies quartus. Dixit eciã deꝰ. Producãt aque reptile anime uiuentis ⁊ uolatile super terrã: sub firmamẽto celi. Creauitq deus cete grandia: et omnẽ aĩam uiueritẽ atq indtabilẽ quã ꝓduxerãt aque ĩ specie ᷤ suas: ⁊ omne uolatile scd̃m geriꝰ suũ. Et uidit deus ty esset bonũ: beriedixitq eis dicens. Crescite ⁊ mltiplicaminr: ⁊ replete aquas maris: auesq mltipli- tenit̾ suꝑ terrã. Et factũ ẽ uesꝑe ⁊ mane dies quĩtus. Dixit quoq: deus. Pro- ducat terra aĩam uiuentẽ in geriẽ suo: iumenta ⁊ reptilia. ⁊ bestias terre scd̃m species suas. Factũq ẽ ĩta. Et fecit deꝰ bestias terre iuxta species suas: iumeri ta ⁊ omne reptile terre ĩ geriere suci. Et uidit deus ty esser bonũ: et ait. Facia- mus hoĩem ad ymaginẽ ⁊ siłitudinẽ nostrã: ⁊ presit piscibz maris. et uola tilib teli ⁊ bestiis uniuseq terre: Duñq reptili qd̃ mn ouetur ĩ terra. Et treauĩt deus hoĩem ad ymaginẽ ⁊ silitudinẽ suã: ad ymaginẽ dei treauit illũ: ma. sculũ ⁊ feminã treauit eos. Beredixit qz illis deus: ⁊ ait. Crescite ⁊ młtiplita- mĩni ⁊ replete terrã. et sb̃icite eã. et dña mini pistib maris. et uolatilib teli: et oniuersis animãtib que mouent᷑ suꝑ terrã. Dixitq deꝰ. Ecce dedĩ uobi ᷤ dmnẽ herbã afferentẽ semen suꝑ terrã. et uniu̾̃sa ligna que hñt in semetip̃is semeritẽ gerir̃s sui. ut sint uobis ĩ estã ⁊ tunctis aĩantib terre. õmĩq uolutri celi ⁊ omuersis q̃ mouẽtur in terra. ⁊ ĩ quibs est anĩma uiuẽs: ut habcãt ad pescenidũ. Et factũ est ita. Uiditq deus tuncta que fecerar: ⁊ erãt ualde bona.</tei:ab>
+         <tei:note type="runningTitle">uito Genesis</tei:note>
+         <tei:note type="margin">¶.i.</tei:note>
+      </tei:body>
+   </tei:text>
+</tei:TEI>
