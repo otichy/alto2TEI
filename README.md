@@ -38,3 +38,10 @@ A preconfigured task in `.vscode/tasks.json` targets the XSLT/XPath extension. T
 - Change the zone labels in `alto2tei.xsl` if your ALTO uses different ones.
 - Adjust header text or add more TEI metadata as needed.
 - Extend the stylesheet with more zones or TEI elements if you need finer granularity.
+
+
+![Alt text](./visualisation_overview.svg "Overview visualisation")
+<img src="./visualisation_overview.svg">
+
+![Alt text](./visualisation_snippets.svg "Visualisation with examples")
+<img src="./visualisation_snippets.svg">
