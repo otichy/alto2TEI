@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <style>
+      .title { font: 700 22px sans-serif; }
+      .h2 { font: 700 16px sans-serif; }
+      .txt { font: 13px sans-serif; }
+      .mono { font: 12px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+      .box { fill: #ffffff; stroke: #111; stroke-width: 1.5; rx: 14; ry: 14; }
+      .box2 { fill: #f7f7f7; stroke: #111; stroke-width: 1.5; rx: 14; ry: 14; }
+      .box3 { fill: #fff7e6; stroke: #111; stroke-width: 1.5; rx: 14; ry: 14; }
+      .box4 { fill: #eef6ff; stroke: #111; stroke-width: 1.5; rx: 14; ry: 14; }
+      .box5 { fill: #eefbf0; stroke: #111; stroke-width: 1.5; rx: 14; ry: 14; }
+      .arrow { stroke: #111; stroke-width: 1.8; fill: none; marker-end: url(#arrowHead); }
+      .dashed { stroke-dasharray: 6 6; }
+      .note { fill: #fff; stroke: #777; stroke-width: 1.2; rx: 10; ry: 10; }
+      .small { font: 12px sans-serif; fill: #222; }
+      .muted { fill: #444; }
+    </style>
+
+    <marker id="arrowHead" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M 0 0 L 12 5 L 0 10 z" fill="#111"></path>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="40" y="44" class="title">How the XSLT transforms ALTO 4.x → minimal TEI</text>
+  <text x="40" y="70" class="txt muted">Key idea: use ALTO <tspan class="mono">OtherTag/@LABEL</tspan> → IDs → match <tspan class="mono">TextBlock/@TAGREFS</tspan> → join all <tspan class="mono">String/@CONTENT</tspan></text>
+
+  <!-- LEFT: Input -->
+  <rect x="40" y="110" width="360" height="210" class="box4"></rect>
+  <text x="60" y="142" class="h2">Input: ALTO XML (v4 namespace)</text>
+  <text x="60" y="170" class="txt">Default XPath namespace:</text>
+  <text x="60" y="192" class="mono">xpath-default-namespace="http://www.loc.gov/standards/alto/ns-v4#"</text>
+  <text x="60" y="226" class="txt">Important ALTO areas used:</text>
+  <text x="60" y="248" class="mono">/alto/Tags/OtherTag[@LABEL=…]/@ID</text>
+  <text x="60" y="270" class="mono">/alto/Layout//TextBlock/@TAGREFS</text>
+  <text x="60" y="292" class="mono">//String/@CONTENT</text>
+
+  <!-- TOP-MID: Stylesheet setup -->
+  <rect x="440" y="110" width="450" height="210" class="box2"></rect>
+  <text x="460" y="142" class="h2">Stylesheet configuration</text>
+
+  <text x="460" y="170" class="txt">Namespaces</text>
+  <text x="460" y="192" class="mono">xsl, xs, tei</text>
+  <text x="460" y="214" class="txt">Output formatting</text>
+  <text x="460" y="236" class="mono">&lt;xsl:output method="xml" indent="yes"/&gt;</text>
+
+  <rect x="700" y="160" width="170" height="130" class="note"></rect>
+  <text x="714" y="186" class="h2">Why default ALTO ns?</text>
+  <text x="714" y="208" class="small">So paths like</text>
+  <text x="714" y="228" class="mono">/alto/Layout//TextBlock</text>
+  <text x="714" y="248" class="small">work without</text>
+  <text x="714" y="268" class="mono">alto:TextBlock</text>
+
+  <!-- Arrows from Input to config -->
+  <path d="M 400 215 L 440 215" class="arrow"></path>
+
+  <!-- CENTER: Function tei:zone-text -->
+  <rect x="440" y="350" width="840" height="250" class="box3"></rect>
+  <text x="460" y="382" class="h2">Helper function: tei:zone-text($doc, $label) → xs:string?</text>
+  <text x="460" y="410" class="txt">Purpose: extract plain text from all TextBlocks whose TAGREFS point to OtherTag IDs for a given label.</text>
+
+  <!-- Function steps boxes -->
+  <rect x="460" y="435" width="250" height="145" class="box"></rect>
+  <text x="475" y="462" class="h2">1) Lookup IDs for label</text>
+  <text x="475" y="490" class="txt">Select IDs:</text>
+  <text x="475" y="512" class="mono">$ids := $doc/Tags/OtherTag</text>
+  <text x="475" y="532" class="mono">  [@LABEL=$label]/@ID</text>
+  <text x="475" y="560" class="small muted">Example labels: MainZone, RunningTitleZone, MarginTextZone</text>
+
+  <rect x="730" y="435" width="280" height="145" class="box"></rect>
+  <text x="745" y="462" class="h2">2) Find matching TextBlocks</text>
+  <text x="745" y="490" class="txt">Match TAGREFS tokens against $ids:</text>
+  <text x="745" y="512" class="mono">$blocks := $doc/Layout//TextBlock</text>
+  <text x="745" y="532" class="mono">  [tokenize(@TAGREFS,'\\s+') = $ids]</text>
+  <text x="745" y="560" class="small muted">Because TAGREFS may contain multiple IDs separated by spaces</text>
+
+  <rect x="1025" y="435" width="235" height="145" class="box"></rect>
+  <text x="1040" y="462" class="h2">3) Concatenate words</text>
+  <text x="1040" y="490" class="txt">Collect all String/@CONTENT:</text>
+  <text x="1040" y="512" class="mono">string-join($blocks//String/@CONTENT,' ')</text>
+  <text x="1040" y="540" class="small muted">Returns a single whitespace-separated string (or empty)</text>
+
+  <!-- Arrows within function -->
+  <path d="M 710 508 L 730 508" class="arrow"></path>
+  <path d="M 1010 508 L 1025 508" class="arrow"></path>
+
+  <!-- RIGHT: TEI Output skeleton -->
+  <rect x="940" y="110" width="340" height="210" class="box5"></rect>
+  <text x="960" y="142" class="h2">Output: TEI document</text>
+  <text x="960" y="170" class="mono">&lt;tei:TEI&gt;</text>
+  <text x="980" y="192" class="mono">&lt;tei:teiHeader&gt; … &lt;/tei:teiHeader&gt;</text>
+  <text x="980" y="214" class="mono">&lt;tei:text&gt;&lt;tei:body&gt; … &lt;/tei:body&gt;&lt;/tei:text&gt;</text>
+  <text x="960" y="246" class="txt">Populates:</text>
+  <text x="960" y="268" class="mono">&lt;tei:ab&gt; main text &lt;/tei:ab&gt;</text>
+  <text x="960" y="290" class="mono">&lt;tei:note type="runningTitle"&gt; … &lt;/tei:note&gt;</text>
+  <text x="960" y="312" class="mono">&lt;tei:note type="margin"&gt; … &lt;/tei:note&gt;</text>
+
+  <!-- Arrows from function to output -->
+  <path d="M 860 350 L 1010 320" class="arrow dashed"></path>
+
+  <!-- BOTTOM: Template match="/" -->
+  <rect x="40" y="640" width="1240" height="220" class="box"></rect>
+  <text x="60" y="672" class="h2">Main template: match="/" (entry point)</text>
+
+  <!-- Template steps -->
+  <rect x="60" y="700" width="560" height="140" class="box2"></rect>
+  <text x="80" y="728" class="h2">A) Build TEI header</text>
+  <text x="80" y="754" class="txt">Creates minimal metadata and copies source filename from ALTO:</text>
+  <text x="80" y="778" class="mono">normalize-space(/alto/Description/sourceImageInformation/fileName)</text>
+  <text x="80" y="808" class="small muted">Inserted into: teiHeader/fileDesc/sourceDesc/p</text>
+
+  <rect x="640" y="700" width="620" height="140" class="box2"></rect>
+  <text x="660" y="728" class="h2">B) Build TEI body (calls tei:zone-text 3×)</text>
+  <text x="660" y="754" class="txt">Main text → <tspan class="mono">&lt;tei:ab&gt;</tspan></text>
+  <text x="660" y="776" class="mono">tei:zone-text(/alto,'MainZone')</text>
+
+  <text x="660" y="804" class="txt">Running title → <tspan class="mono">&lt;tei:note type="runningTitle"&gt;</tspan></text>
+  <text x="1030" y="804" class="mono">tei:zone-text(/alto,'RunningTitleZone')</text>
+
+  <text x="660" y="832" class="txt">Margin text → <tspan class="mono">&lt;tei:note type="margin"&gt;</tspan></text>
+  <text x="1005" y="832" class="mono">tei:zone-text(/alto,'MarginTextZone')</text>
+
+  <!-- Arrows: input to template; template to output -->
+  <path d="M 220 320 L 220 640" class="arrow"></path>
+  <path d="M 1060 640 L 1110 320" class="arrow"></path>
+
+  <!-- Arrow: template body calls function -->
+  <path d="M 950 700 L 950 600" class="arrow"></path>
+  <text x="965" y="636" class="small muted">calls</text>
+
+  <!-- Legend -->
+  <rect x="40" y="870" width="1240" height="1" fill="#ddd"></rect>
+  <text x="40" y="892" class="small muted">
+    Reading tip: the labels (MainZone/RunningTitleZone/MarginTextZone) live in ALTO Tags, not in Layout; TAGREFS links Layout blocks back to those Tag IDs.
+  </text>
+</svg>
